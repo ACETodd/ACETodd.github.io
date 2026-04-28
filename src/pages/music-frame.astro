@@ -1,0 +1,256 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CD from '../components/CD.astro';
+import setupImg from '../assets/setup.png';
+---
+
+<Layout>
+ <div class='container'>
+ <h1>Music Frame</h1>
+ <section class="writeup">
+ 
+  <blockquote class="quote">
+    “Some people are born to make great art and others are born to appreciate it”
+  </blockquote>
+  <div class="full-bleed-cd">
+  <div class="cdContainer">
+    <div class="cdItem"><CD /></div>
+    <div class="cdItem"><CD /></div>
+    <div class="cdItem"><CD /></div>
+    <div class="cdItem"><CD /></div>
+    <div class="cdItem"><CD /></div>
+  </div>
+  </div>
+  <div class="section-block setup-block">
+    <h2>The Setup</h2>
+    <p>
+      Raspberry Pi attached to a 120hz monitor that is enclosed by a bespoke walnut frame cut by my father. The Frontend is hosted on Vercel and the backend is hosted on Render for a total cost of $0. Currently, I am under powering the Pi at only 15 watts with 3 amps being the bottleneck. The Pi5 calls for 25 watts to power it. This limitation is due to the PD splitter that I am using to power the monitor and Pi at the same time. I value aesthetics over performance and the overall performance of the Pi is negligible with the current workflow.
+    </p>
+    <div class="setup-callout">
+      <img src={setupImg.src} alt="Back of Music Frame" class="frame-img" />
+      <svg class="arrow" viewBox="0 0 180 80" fill="none">
+        <path
+          d="M5 55 C45 5, 90 35, 135 45"
+          stroke="#df2f2f"
+          stroke-width="4"
+          stroke-linecap="round"
+        />
+        <path
+          d="M128 25 L160 48 L123 65"
+          stroke="#df2f2f"
+          stroke-width="4"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </div>
+  </div>
+
+  <div class="section-block flow-block">
+    <h2>The Flow</h2>
+    <div class="flow-content">
+    <p>
+      Users scan a QR code that is presented on the frame. The QR code takes the user to a login page on their phone which connects to Spotify. After logging into Spotify successfully, the user should see on the frame “connecting to Spotify”. Upon successful connection a blank CD will appear if a user is not actively listening to music. If they are listening to a song on Spotify then they will see the CD with the album art of that song slide up from the bottom and begin to spin with the title and artist fading onto the screen on the bottom.
+    </p>
+    <div class="video-wrapper">
+    <video
+      class="demo-video"
+      src="/plasticbeach.mp4"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+    ></video>
+    </div>
+     <div class="flow-callout">
+      <svg class="arrow-left" viewBox="0 0 180 80" fill="none">
+        <path
+          d="M175 55 C135 5, 90 35, 45 45"
+          stroke="#df2f2f"
+          stroke-width="4"
+          stroke-linecap="round"
+        />
+        <path
+          d="M52 25 L20 48 L57 65"
+          stroke="#df2f2f"
+          stroke-width="4"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <h2>The Point</h2>
+    <p>
+      I wanted to explore a physical solution to display digital music. Vinyls and turntables are all the rage right now because people like to touch things. They like looking at physical music. For years record collections have acted as a conversation piece in peoples homes. It’s hard to replicate that feeling with a music streaming service, but this was my attempt.
+    </p>
+  </div>
+</section>
+ </div>
+</Layout>
+
+
+<style>
+
+  .writeup {
+    padding-bottom: 1.5rem;
+  }
+
+  .quote {
+    margin: 3rem 0 3rem;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    font-style: italic;
+    color: #444;
+    border-left: 2px solid #bbb;
+    padding-left: 1rem;
+  }
+  
+  .section-block {
+    margin-bottom: 2.5rem;
+  }
+
+  h2 {
+    margin: 0 0 0.75rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-transform: lowercase;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #222;
+  }
+  .cdContainer {
+    display: flex;
+    align-items: center;
+  }
+
+  .cdItem {
+    margin-left: -80px;
+    position: relative;
+  }
+
+  .cdItem:first-child {
+    margin-left: 0;
+  }
+
+  .cdItem:nth-child(1) { z-index: 5; }
+  .cdItem:nth-child(2) { z-index: 4; }
+  .cdItem:nth-child(3) { z-index: 3; }
+  .cdItem:nth-child(4) { z-index: 2; }
+  .cdItem:nth-child(5) { z-index: 1; }
+
+.full-bleed-cd {
+    padding-bottom: 4rem;
+}
+.setup-block {
+  position: relative;
+}
+
+.setup-callout {
+  position: absolute;
+  top: 2rem;
+  left: calc(100% + 3rem);
+  width: 320px;
+  height: 260px;
+  pointer-events: none;
+}
+
+.frame-img {
+  position: absolute;
+  left: 150px;
+  top: -125px;
+  width: 300px;
+  height: auto;
+}
+
+.arrow {
+  position: absolute;
+  left: 0;
+  top: 45px;
+  width: 170px;
+  height: 80px;
+}
+.flow-block {
+  position: relative;
+}
+
+.video-wrapper {
+  position: absolute;
+  left: -550px;
+  top: -10rem;
+}
+
+.demo-video {
+  width: 280px;
+  display: block;
+}
+
+.flow-callout {
+  position: absolute;
+  top: 3rem;
+  left: -240px;
+  width: 180px;
+  height: 80px;
+  pointer-events: none;
+  z-index: 10;
+}
+.flow-content {
+  position: relative;
+}
+
+
+
+.arrow-left {
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+
+  /* ❌ remove arrows entirely */
+  .arrow,
+  .arrow-left {
+    display: none;
+  }
+
+  /* ✅ setup image goes under paragraph */
+  .setup-callout {
+    position: static;
+    width: 100%;
+    height: auto;
+    margin-top: 1rem;
+  }
+
+  .frame-img {
+    position: static;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  /* ✅ flow video goes under paragraph */
+  .video-wrapper {
+    position: static;
+    margin-top: 1rem;
+  }
+
+  .demo-video {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* ❌ kill the left offset arrow container */
+  .flow-callout {
+    display: none;
+  }
+}
+</style>

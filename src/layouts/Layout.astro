@@ -1,0 +1,39 @@
+---
+import { GeistMono } from 'geist/dist/fonts/geist-mono';
+import Header from '../components/Header.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Todd Hoover</title>
+	</head>
+	<body>
+	<div class="page-shell">
+	<Header />
+	<slot />
+	</body>
+	</div>
+	
+</html>
+
+<style>
+	html {
+  		scrollbar-gutter: stable;
+	}
+	body {
+		margin: 0;
+		height: 100%;
+		font-family: "Geist Mono", monospace;		
+	}
+	.page-shell {
+		max-width: 680px;
+		margin: 0 auto;
+		padding: 0 1rem;
+  	}
+</style>

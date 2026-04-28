@@ -1,0 +1,29 @@
+---
+// src/components/Navbar.astro
+const path = Astro.url.pathname;
+---
+
+<nav class="navbar">
+  <a href="/" class={path === "/" ? "active" : ""}>home</a>
+  <a href="/works" class={path === "/works" ? "active" : ""}>works</a>
+  <a href="/contact" class={path === "/contact" ? "active" : ""}>contact</a>
+</nav>
+
+<style>
+  .navbar {
+    display: flex;
+    justify-content: left;
+    gap: 1rem;
+    font-family: Georgia, serif;
+    font-size: 1.1rem;
+  }
+
+  .navbar a {
+    color: #486ecf;
+    text-decoration: none;
+  }
+
+  .navbar a.active {
+    text-decoration: underline;
+  }
+</style>
